@@ -1,7 +1,17 @@
+"""FastAPI application that exposes the academic calendar API."""
+
+from __future__ import annotations
+
+import asyncio
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from agent.check_calendar import main as run_calendar_check
 from agent.extract_calendar import get_calendar_payload
+
+logger = logging.getLogger(__name__)
 
 app = FastAPI(title="YTÜ Akademik Takvim API")
 
@@ -18,3 +28,21 @@ app.add_middleware(
 async def oku_takvim():
     """Return structured academic calendar entries for 2025-2026."""
     return get_calendar_payload()
+
+
+async def schedule_calendar_check() -> None:
+    """Run the calendar checker in a background thread."""
+
+    async def runner() -> None:
+        try:
+            await asyncio.to_thread(run_calendar_check)
+        except Exception:  # pylint: disable=broad-except
+            logger.exception("Calendar check failed during startup.")
+
+    asyncio.create_task(runner())
+
+
+@app.on_event("startup")
+async def on_startup() -> None:
+    """Kick off the calendar check when the application starts."""
+    await schedule_calendar_check()
