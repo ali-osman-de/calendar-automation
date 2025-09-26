@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Release Link
 1. https://calendar-automation.netlify.app/ 
 2. https://calendar-automation-aiua.onrender.com/
@@ -8,8 +7,6 @@
 # Release Link
 1. https://calendar-automation.netlify.app/ 
 2. https://calendar-automation-aiua.onrender.com/
->>>>>>> 8bcfeb7 (Update readme.md)
->>>>>>> bb9534d (Update readme.md)
 # Calendar Monitor Agent
 
 This script downloads the most recent academic calendar from https://ogi.yildiz.edu.tr/ogi/3 and keeps a local copy.
