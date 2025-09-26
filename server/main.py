@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from agent.extract_calendar import get_calendar_payload
+# from agent.extract_calendar import get_calendar_payload
 
 app = FastAPI(title="YTÜ Akademik Takvim API")
 
