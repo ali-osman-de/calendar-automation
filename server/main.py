@@ -30,6 +30,12 @@ async def oku_takvim():
     return get_calendar_payload()
 
 
+@app.get("/")
+async def root() -> dict[str, str]:
+    """Provide a simple landing response for the service root."""
+    return {"message": "Use /api/takvim to fetch the academic calendar."}
+
+
 async def schedule_calendar_check() -> None:
     """Run the calendar checker in a background thread."""
 
