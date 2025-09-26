@@ -17,7 +17,12 @@ app = FastAPI(title="YTÜ Akademik Takvim API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://calendar-automation.netlify.app/"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://calendar-automation.netlify.app",
+        "https://dazzling-horse-7a571a.netlify.app",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
