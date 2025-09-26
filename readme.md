@@ -1,3 +1,6 @@
+# Release Link
+client -> https://calendar-automation.netlify.app/
+server -> https://calendar-automation-aiua.onrender.com/
 # Calendar Monitor Agent
 
 This script downloads the most recent academic calendar from https://ogi.yildiz.edu.tr/ogi/3 and keeps a local copy.
