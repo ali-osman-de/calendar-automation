@@ -3,7 +3,7 @@ import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import trLocale from '@fullcalendar/core/locales/tr';
 
-const API_URL = 'http://127.0.0.1:8000/api/takvim';
+const API_URL = 'https://calendar-automation-aiua.onrender.com/api/takvim';
 
 const DATE_FORMATTER = new Intl.DateTimeFormat('tr-TR', {
   day: '2-digit',
