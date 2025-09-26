@@ -5,7 +5,7 @@ from __future__ import annotations
 import asyncio
 import logging
 
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from agent.check_calendar import main as run_calendar_check
@@ -27,7 +27,21 @@ app.add_middleware(
 @app.get("/api/takvim")
 async def oku_takvim():
     """Return structured academic calendar entries for 2025-2026."""
-    return get_calendar_payload()
+    try:
+        return get_calendar_payload()
+    except FileNotFoundError:
+        logger.info("Calendar data missing, triggering download.")
+        await asyncio.to_thread(run_calendar_check)
+        try:
+            return get_calendar_payload()
+        except FileNotFoundError as error:
+            raise HTTPException(status_code=503, detail="Calendar data unavailable.") from error
+
+
+@app.get("/startup")
+async def startup_status() -> dict[str, str]:
+    """Expose an endpoint to show that the service is alive."""
+    return {"status": "ok", "detail": "Service is running. Use /api/takvim."}
 
 
 @app.get("/")
