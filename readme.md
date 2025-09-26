@@ -1,9 +1,7 @@
 # Release Link
 1. https://calendar-automation.netlify.app/ 
 2. https://calendar-automation-aiua.onrender.com/
-=======
-<<<<<<< HEAD
-=======
+   
 # Release Link
 1. https://calendar-automation.netlify.app/ 
 2. https://calendar-automation-aiua.onrender.com/
